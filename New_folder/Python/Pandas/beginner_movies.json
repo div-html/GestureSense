@@ -1,0 +1,66 @@
+[
+    {
+        "Title": "Inception",
+        "Release_Date": "2010-07-16",
+        "Genre": "Sci-Fi",
+        "IMDB_Rating": 8.8,
+        "Duration_Minutes": 148,
+        "Language": "English"
+    },
+    {
+        "Title": "Interstellar",
+        "Release_Date": "2014-11-07",
+        "Genre": "Sci-Fi",
+        "IMDB_Rating": 8.7,
+        "Duration_Minutes": 169,
+        "Language": "English"
+    },
+    {
+        "Title": "The Dark Knight",
+        "Release_Date": "2008-07-18",
+        "Genre": "Action",
+        "IMDB_Rating": 9.0,
+        "Duration_Minutes": 152,
+        "Language": "English"
+    },
+    {
+        "Title": "Titanic",
+        "Release_Date": "1997-12-19",
+        "Genre": "Romance",
+        "IMDB_Rating": 7.9,
+        "Duration_Minutes": 194,
+        "Language": "English"
+    },
+    {
+        "Title": "The Matrix",
+        "Release_Date": "1999-03-31",
+        "Genre": "Sci-Fi",
+        "IMDB_Rating": 8.7,
+        "Duration_Minutes": 136,
+        "Language": "English"
+    },
+    {
+        "Title": "Jurassic Park",
+        "Release_Date": "1993-06-11",
+        "Genre": "Adventure",
+        "IMDB_Rating": 8.2,
+        "Duration_Minutes": 127,
+        "Language": "English"
+    },
+    {
+        "Title": "The Lion King",
+        "Release_Date": "1994-06-24",
+        "Genre": "Animation",
+        "IMDB_Rating": 8.5,
+        "Duration_Minutes": 88,
+        "Language": "English"
+    },
+    {
+        "Title": "Toy Story",
+        "Release_Date": "1995-11-22",
+        "Genre": "Animation",
+        "IMDB_Rating": 8.3,
+        "Duration_Minutes": 81,
+        "Language": "English"
+    }
+]
