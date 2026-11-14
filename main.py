@@ -1,17 +1,3 @@
-"""
-GestureSense - Smart Volume Controller (Windows)
-Uses the MediaPipe Tasks API (HandLandmarker), since mp.solutions was removed.
-
-  - Pinch thumb + index finger  -> volume goes DOWN
-  - Spread thumb + index finger -> volume goes UP
-  - Keep pinky DOWN             -> volume follows your fingers (active)
-  - Raise pinky UP              -> volume is LOCKED
-  - Press 'q'                   -> quit
-
-Install:
-    pip install opencv-python mediapipe numpy pycaw comtypes
-"""
-
 import math
 import os
 import time
@@ -26,7 +12,6 @@ from mediapipe.tasks import python as mp_python
 from mediapipe.tasks.python import vision
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
-# ----------------------------- Configuration ------------------------------
 CAM_INDEX = 0
 FRAME_W, FRAME_H = 1280, 720
 
@@ -39,24 +24,17 @@ MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hand_land
 DETECT_CONF = 0.7
 PRESENCE_CONF = 0.7
 TRACK_CONF = 0.7
-
-# Pinch distance / palm size -> these ratios map to 0% and 100% volume
-RATIO_MIN = 0.25   # fingers touching
-RATIO_MAX = 1.40   # fingers fully spread
-
-SMOOTHING = 0.25   # 0..1, lower = smoother but slower
-# --------------------------------------------------------------------------
-
-# Hand skeleton connections (21 landmarks)
+RATIO_MIN = 0.25   
+RATIO_MAX = 1.40   
+SMOOTHING = 0.25   
 HAND_CONNECTIONS = [
     (0, 1), (1, 2), (2, 3), (3, 4),          # thumb
     (0, 5), (5, 6), (6, 7), (7, 8),          # index
     (5, 9), (9, 10), (10, 11), (11, 12),     # middle
     (9, 13), (13, 14), (14, 15), (15, 16),   # ring
     (13, 17), (17, 18), (18, 19), (19, 20),  # pinky
-    (0, 17),                                  # palm edge
+    (0, 17),                                 # palm edge
 ]
-
 
 def ensure_model():
     if not os.path.exists(MODEL_PATH):
@@ -66,9 +44,8 @@ def ensure_model():
 
 
 def get_volume_interface():
-    """Return IAudioEndpointVolume (works with old and new pycaw)."""
     speakers = AudioUtilities.GetSpeakers()
-    if hasattr(speakers, "EndpointVolume"):  # newer pycaw
+    if hasattr(speakers, "EndpointVolume"):
         return speakers.EndpointVolume
     interface = speakers.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
     return cast(interface, POINTER(IAudioEndpointVolume))
